@@ -7,6 +7,12 @@ else
     path = "D:\\temp2\\";
 let newDir = path + path.split("\\").slice(-2, -1).pop();
 startDoWork(path);
+fs.watch(path, function (eventType, fileName) {
+    if(fileName)
+        fs.appendFile(newDir+"\\watcher.log", `${new Date().toString()} || ${fileName} >>> ${eventType}` + '\n', function (err) {
+            if (err) throw err;
+        })
+})
 
 function startDoWork(p_path) {
     if (fs.existsSync(`${p_path}\\summary.js`))
