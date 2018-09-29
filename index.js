@@ -12,7 +12,7 @@ fs.watch(path, function (eventType, fileName) {
         fs.appendFile(newDir+"\\watcher.log", `${new Date().toString()} || ${fileName} >>> ${eventType}` + '\n', function (err) {
             if (err) throw err;
         })
-})
+});
 
 function startDoWork(p_path) {
     if (fs.existsSync(`${p_path}\\summary.js`))
